@@ -20,18 +20,21 @@ import re
 TOKENS = [
     (r'BEGIN',                      'BEGIN'),
     (r'END',                        'END'),
-    (r'case',                       'case_key'),
-    (r'itr',                        'itr_key'),
-    (r'other',                      'other_key'),
+    (r'if',                         'if_key'),
+    (r'for',                        'for_key'),
+    (r'else',                       'else_key'),
     (r'times',                      'times_key'),
-    (r'nat',                        'int_key'),
-    (r'0|-?[1-9][0-9]*',          'lit_int8b'),
-    (r'0|-?[1-9][0-9]*_b8',       'lit_int8b'),
-    (r'0|-?[1-9][0-9]*_b4',       'lit_int4b'),
-    (r'0|-?[1-9][0-9]*_b2',       'lit_int2b'),
-    (r'0|-?[1-9][0-9]*_b1',       'lit_int1b'),
-    (r'[a-zA-Z_]{1,7}',             'var_name'),
-    (r'\.',                         'end_stmt'),
+    (r'int',                        'int_key'),
+    (r'real',                       'real_key'),
+    (r'str',                        'string_key'),
+    (r'bool',                       'boolean_key'),
+    (r'".*"',                       'lit_string'),
+    (r'TRUE',                       'lit_bool'),
+    (r'FALSE',                      'lit_bool'),
+    (r'0|-?[1-9][0-9]*',            'lit_int4b'),
+    (r'-?\d+\.\d+',                 'lit_real'),
+    (r'[a-zA-Z_]{1,7}',             'id'),
+    (r'\;',                         'end_stmt'),
     (r'\+',                         'add'),
     (r'-',                          'subtract'),
     (r'\*',                         'multiply'),
@@ -46,8 +49,8 @@ TOKENS = [
     (r'>=',                         'GTE'),
     (r'\(',                         'L_paren'),
     (r'\)',                         'R_paren'),
-    (r'\[',                         'L_bracket'),
-    (r'\]',                         'R_bracket'), 
+    (r'\{',                         'L_bracket'),
+    (r'\}',                         'R_bracket'), 
 ]
 
 BYTE_SPECIFIC_INT = [
@@ -56,6 +59,7 @@ BYTE_SPECIFIC_INT = [
     r'0|[1-9][0-9]*_b2',
     r'0|[1-9][0-9]*_b1'
 ]
+
 
 #--------------------------------------------------------------------------#
 #                            TOKEN                                         #
