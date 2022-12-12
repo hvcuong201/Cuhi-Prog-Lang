@@ -54,13 +54,13 @@ class Parser:
         if key == 'int_key':
             if self.Var_decl() == True:
                 return True
-        elif key == 'var_name':
+        elif key == 'id':
             if self.Var_assign() == True:
                 return True
-        elif key == 'case_key':
+        elif key == 'if_key':
             if self.Case() == True:
                 return True
-        elif key == 'itr_key':
+        elif key == 'for_key':
              if self.Itr() == True:
                 return True
         else:
@@ -71,10 +71,10 @@ class Parser:
     def Var_decl(self):
         var = self.to_next_tok()
         stop = self.to_next_tok()
-        if var == 'var_name' and stop == 'end_stmt':
+        if var == 'id' and stop == 'end_stmt':
             return True
         else:
-            return "Bad"
+            return False
     
 
     #Checks if variable assignment/initialization statement has correct syntax
@@ -88,10 +88,10 @@ class Parser:
                     return True
                 else:
                     print('Error: expecting "."')               
-                    return "Bad"
+                    return False
         else:
             print('Error: expecting "="')               
-            return "Bad"
+            return False
     
 
     #Checks if case statement has correct syntax
@@ -101,7 +101,7 @@ class Parser:
             if next == "L_bracket":            
                 if self.If_true() == True:              
                     next = self.to_next_tok()
-                    if next == 'other_key':
+                    if next == 'else_key':
                         next = self.to_next_tok()
                         if next == "L_bracket":
                             if self.If_false() == True:
@@ -109,23 +109,24 @@ class Parser:
                                     return True
                                 else:
                                     self.tok_ind -= 1
-                                    print('Syntax error: Expecting "."')
-                                    return 'Bad'
+                    
+                                    print('Syntax error: Expecting ";"')
+                                    return False
                         else:
                             self.tok_ind -= 1                       
-                            return 'Bad'                                    
+                            return False                                    
                     elif next == 'end_stmt':                    
                         return True
                     else:
                         self.tok_ind -= 1
-                        print('Syntax error: Expecting "."') 
-                        return 'Bad' 
+                        print('Syntax error: Expecting ";"') 
+                        return False 
             else:
                 self.tok_ind -= 1
-                print('Expecting "["')
-                return 'Bad'      
+                print('Expecting "{"')
+                return False      
         else: 
-            return 'Bad'          
+            return False          
     
 
     #Checks if Boolean expression has correct syntax
@@ -140,29 +141,29 @@ class Parser:
                             return True
                         else:
                             self.tok_ind -= 1
-                            return 'bad'
+                            return False
                 else:
                     self.tok_ind -= 1 
-                    return 'bad'
+                    return False
         else:
             self.tok_ind -= 1
-            return "Bad"
+            return False
 
-        return 'Bad'
+        return False
 
 
     #Recursively CHecks all statments in case's (if statment) execution block for syntax errors
     def If_true(self):
         next = self.to_next_tok()
-        if next == "R_bracket":         
+        if next == "R_bracket":       
             return True
         self.tok_ind -= 1
-        if self.Statement() == True:                             
+        if self.Statement() == True:                            
             if self.If_true() == True:
                 return True        
         
         print('Syntax error at If_true')
-        return 'Bad'
+        return False
     
 
     #Recursively CHecks all statments in other's (else statment) execution block for syntax errors 
@@ -175,7 +176,7 @@ class Parser:
             if self.If_false() == True:
                 return True 
         print('Syntax error in if_false execution block')             
-        return 'Bad'
+        return False
         
     
     
@@ -191,15 +192,15 @@ class Parser:
                         else:                
                             self.tok_ind -= 1
                             print('Syntax error: "." expected')
-                            return 'Bad'
+                            return False
                 else:                
                     self.tok_ind -= 1
                     print('Syntax error: "[" expected')
-                    return 'Bad'
+                    return False
             else:                
                 self.tok_ind -= 1
                 print('Syntax error: "times" expected')
-                return 'Bad'
+                return False
         return 'Syntax error at Itr'
     
 
@@ -213,7 +214,7 @@ class Parser:
             if self.To_repeat() == True:
                 return True                        
         print('Syntax error at To_repeat')
-        return 'Bad'
+        return False
     
 
     #Checks if mathmetical expression's syntax is correct
@@ -226,7 +227,7 @@ class Parser:
             self.tok_ind -= 1
             return True
             
-        return 'Bad'
+        return False
 
 
     #Checks if term's syntax is correct ()
@@ -238,7 +239,7 @@ class Parser:
             if self.Factor() == True:
                 return True 
         self.tok_ind -= 1          
-        return 'Bad'
+        return False
 
 
     #Checks the operand's syntax (number, expression in parentheses)
@@ -251,23 +252,20 @@ class Parser:
                     return True
                 self.tok_ind -= 1
         self.tok_ind -= 1
-        return 'Bad'
+        return False
 
 
     #Check if the next token is a number (literal + variable)
     def Number(self):
         nums = [
-            'lit_int8b', 
             'lit_int4b', 
-            'lit_int2b', 
-            'lit_int1b', 
-            'var_name'
+            'id'
         ]
         next = self.to_next_tok()
         if next in nums :
             return True
         self.tok_ind -= 1
-        return 'bad'
+        return False
 
 
 #--------------------------------------------------------------------------#

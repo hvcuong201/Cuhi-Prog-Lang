@@ -6,7 +6,7 @@ if __name__ == "__main__":
     mylex = Lexer()
 
     #token list created
-    mytokens, lex_stat = mylex.tokenize("no_error_test1.txt")
+    mytokens, lex_stat = mylex.tokenize("no_error_test2.txt")
 
     if lex_stat == 'No':
         myParse = Parser(mytokens)
