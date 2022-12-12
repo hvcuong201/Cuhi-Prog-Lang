@@ -1,15 +1,15 @@
 BEGIN
 
-nat a.
-nat $ .
-nat count .
-:) === 0 .
+int a;
+int $ ;
+int count ;
+:) === 0 ;
 
-case ( @ == 2 ) [ itr 6 times [ a = a + 1 . ] .
-                  b = 0 .
-                  b = b + a .
-                  count = count + 1 .
-] 
-other [ b = -99 . ] .
+if ( @ == 2 ) { itr 6 times { a = a + 1 ; } ;
+                  b = 0 ;
+                  b = b + a ;
+                  count = count + 1 ;
+} 
+else { b = -99 ; } ;
 
 END
