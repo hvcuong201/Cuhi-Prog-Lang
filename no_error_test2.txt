@@ -1,0 +1,16 @@
+BEGIN
+
+int a ;
+int b ;
+int count ;
+a = 0 ;
+
+if ( a == 2 ) { for 6 times { a = a + 1 ; } ;
+                  b = 0 ;
+                  b = b + a ;
+                  count = count + 1 ;
+} 
+    
+else { b = -99 ; } ;
+
+END
