@@ -1,0 +1,55 @@
+ defined production rules:
+
+
+
+<Start>             ::= BEGIN <Statement_list>
+
+<Statement_list>    ::=  <Statement> <Statement_list> 
+                                         | END
+
+<Statement>   		::= int <Var_decl>
+  			    | real <Var_decl>
+  			    | str <Var_decl>
+  			    | bool <Var_decl>
+                    | if <If>  
+                    | for <For> 
+                    | id <Var_assign> 
+
+<Var_decl> ::= id ";"
+
+<Var_assign> ::=  "=" <Math_expr>
+
+
+<If> ::=    <Boolean_expr> "{" <If_true> else "{" <If_false> ";"
+
+<Boolean_expr> ::= "(" <Number> <Rela_op> <Number> ")"
+<Boolean_expr> ::= TRUE
+<Boolean_expr> ::= FALSE
+<Rela_op> ::= ">" | "<" | "==" | "!=" | "<=" | ">="
+
+<If_true> ::=  <Statement> <If_true> | "}"
+<If_false> ::=   <Statement> <If_false> | "}"
+
+
+<For> ::= <Number> times "{" <To_repeat> ";"
+<To_repeat> ::=  <Statement> <To_repeat> | "}"
+
+
+<Math_expr> ::= <sum>
+<Sum> ::= <Mul> "+" <Sum> 
+        | <Mul>
+<Mul> ::= <Div> "*" <Mul>
+        | <Div>
+<Div> ::= <Subtr> "/" <Div>
+        | <Subtr>
+<Subtr> ::=  <Mod> "-" <Subtr> 
+          | <Mod>
+<Mod> ::= <Factor> "%" <Mod>  
+        | <Factor> 
+<Factor> ::= "(" <Math_expr> ")"
+        | <Number>
+
+
+<Number> ::=  lit_real
+            | lit_int4b
+            | id
