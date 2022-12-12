@@ -1,0 +1,49 @@
+#
+Jason Tran
+Cuong Hoang
+
+
+ 
+
+
+
+PART A: Define Token rules (using Regex)
+| Token name	|	Regex rule		|
+| --------------|-------------------|	
+| 	if_key	|			if		|
+| boolean_key	|			bool		|
+| 	real_key	|			real		|
+| 	string_key	|			str		|		
+|	module:	|			%		|
+|	for_key:	|			for		|
+|	assign:	|			=		|
+|	else_key:	|			else	  	|   
+|	EQ:		|			==		|
+|	times_key:	|			times	     |
+|	NEQ:		|			!=		|
+|	lit_string	|			'".*"'	|
+|	lit_bool	|			TRUE		|
+|	lit_bool	|			FALSE		|
+|	lit_real	|		'-?\d+\.\d+'	|
+|	int_key:	|			int		|
+|	LT:		|			<          |	
+|	lit_int4b:	|         0|-?[1-9])[0-9]*|	|
+|	GT:		|			>	      |
+|	LTE:		|			<=		|
+|	GTE:		|			>=		|
+|	L_paren:	|			\(		|
+|	R_paren:	|			\)		|
+|	id:		|	   [a-zA-Z_]{1,7}	|
+|	L_bracket:	|			\{		|
+|	end_stmt:	|			\.		|
+|	R_bracket:	|			\}		|
+|	add:		|			\+		|
+|	BEGIN:	|			BEGIN	     |
+|	subtract:	|			-		|
+|	END:		|			END		|
+|	multiply:	|			\*		|	
+|	divide:	|			/		|	
+
+
+
+

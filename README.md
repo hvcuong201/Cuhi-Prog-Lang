@@ -1,26 +1,28 @@
-# Cuhi Programming Language
+#Team:
+Jason Tran
+Cuong Hoang
 
-### TODO:
 
-- Rules for all literal values
-- Description of every data type that is provided with the language
-- Rules for how variables are created, operated upon, expressed, and evaluated
-- Rules for the control structures
-- Functions/methods/subprograms and the rules around them
-- Keywords and Special symbols and all of their function
-- Semantics for each syntax rule that is defined.
-- Instructions of how to create valid code.
+ 
+Choose the test file by typing the file name in the tokenize function in main.py
 
-## Keyword List
+•	Notes on language:
+-	Language is called Cuhi Lang
+-	Semantic analyzer was not implemented
 
-TODO...
 
-## Grammar
+•	How to write in this language:
+-	Programs start with BEGIN and ends with END.
+-	Each statement ends with “;”
+-	Each lexeme must be separated by spaces (1 or more)
+-	Declare variable before initialize them
+-	Math expressions can only be done through assigning variables (assign an expression to a variable to use the result)
+-	If is keyword for selection statements, else is for else keyword: if ( Boolean expression)  {execution block } else { execution block} .
+-	For  keyword means for loops: for n times { execution block} .
+-	All statements in execution block must also end with “.”.
+-	There is no limit to number of statements in the execution block.
+-	To declare variable: int (name) .
+-	To write mathematical expressions: write math expressions like normal but every lexeme must be separated by spaces (syntax analyzer will follow the 6 level precedence described in part B) .
 
-TODO...
 
-## Semantic
 
-## Data Type
-
-data type -> operations
