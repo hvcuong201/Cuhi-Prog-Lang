@@ -11,6 +11,4 @@ Lexical Analyzer takes in a source file ( extension for your language optional )
         Boolean
 
 
-Hello Cuong :)))
-
 '''
