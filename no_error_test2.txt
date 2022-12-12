@@ -11,6 +11,6 @@ if ( a == 2 ) { for 6 times { a = a + 1 ; } ;
                   count = count + 1 ;
 } 
     
-other { b = -99 ; } ;
+else { b = -99 ; } ;
 
 END
