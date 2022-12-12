@@ -54,7 +54,7 @@ class Parser:
         if key == 'int_key':
             if self.Var_decl() == True:
                 return True
-        elif key == 'var_name':
+        elif key == 'id':
             if self.Var_assign() == True:
                 return True
         elif key == 'case_key':
@@ -71,7 +71,7 @@ class Parser:
     def Var_decl(self):
         var = self.to_next_tok()
         stop = self.to_next_tok()
-        if var == 'var_name' and stop == 'end_stmt':
+        if var == 'id' and stop == 'end_stmt':
             return True
         else:
             return "Bad"
@@ -261,7 +261,7 @@ class Parser:
             'lit_int4b', 
             'lit_int2b', 
             'lit_int1b', 
-            'var_name'
+            'id'
         ]
         next = self.to_next_tok()
         if next in nums :
